@@ -1,12 +1,12 @@
-import styles from './page.module.scss';
 import Image from "next/image";
+import Link from "next/link";
+import styles from "../page.module.scss";
 import logoImg from "/public/logo.svg";
-import Link from 'next/link';
 
-export default function Home() {
-
-  return (
-    <>
+export default function Recovey(){
+return (
+  <>   
+      <>
     <div className={styles.containerCenter}>
     <Image 
     src={logoImg} 
@@ -15,6 +15,10 @@ export default function Home() {
     />
 
     <section className={styles.login}>
+      <h1>Recuperação de conta</h1>
+
+
+   
     <form >
       <input 
       type='email' 
@@ -25,24 +29,34 @@ export default function Home() {
       />
     </form>
 
+    <form >
+    <input 
+      type='password' 
+      required
+      name='password'
+      placeholder='Informe a nova senha' 
+      className={styles.input}
+      />
+    </form>
+
+
     <form>
       <input 
       type='password' 
       required
       name='password'
-      placeholder='********' 
+      placeholder='Confirme a nova senha' 
       className={styles.input}
       />
 
-<Link href='/recovery' className={styles.reset}>
-Esqueceu a senha?  </Link>
+      
 
       <button 
       type='submit'
       className={styles.button}
-      >Entrar</button>
-      <Link href='/signup' className={styles.link}>
-       Não possui uma conta? Cadastre-se  </Link>
+      >Cadastrar</button>
+      <Link href='/' className={styles.link}>
+       Lembrou da senha? Faça login  </Link>
     </form>
   </section>
 
@@ -52,9 +66,6 @@ Esqueceu a senha?  </Link>
 
   
     </>
-
-  
-  );
-
- 
+</>
+)
 }
