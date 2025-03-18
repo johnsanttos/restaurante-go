@@ -33,7 +33,7 @@ export default function Home() {
 const expresTime= 60 * 60 * 24 * 1000
 
 const cookieStore =await cookies()
-cookieStore.set('section', response.data.token,{
+cookieStore.set('login', response.data.token,{
       maxAge: expresTime,
       path: '/',
       httpOnly: false,
@@ -51,6 +51,7 @@ cookieStore.set('section', response.data.token,{
 
   return (
     <>
+    
     <div className={styles.containerCenter}>
     <Image 
     src={logoImg} 
