@@ -7,6 +7,8 @@ import Image from 'next/image'
 import { Button } from '@/app/dashboard/components/button'
 import {api} from '@/services/api'
 import { getCookieClient } from '@/lib/cookieClient'
+import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
 
 
 
@@ -20,6 +22,7 @@ interface Props{
 }
 
 export function Form({categories}: Props) {
+    const router = useRouter()
 
     const [image, setImage] =useState<File >()
     const [previewImage, setPreviewImage] = useState<string >()
@@ -33,6 +36,7 @@ export function Form({categories}: Props) {
         const description = formData.get('description')
 
         if(!categoryIndex || !name || !price || !description || !image){
+            toast.warning('Preencha todos os campos!')
             return
         }
 
@@ -67,13 +71,17 @@ export function Form({categories}: Props) {
         })
         
         console.log('Resposta:', response.data)
-        alert('Produto cadastrado com sucesso!')
+     
     } catch (error: any) {
+
+        toast.warning('Falha ao cadastrar esse produto!')
         console.error('Erro detalhado:', error)
-        alert(`Erro ao cadastrar produto: ${error.response?.data?.message || error.message}`)
+       
     }
 
-console.log('Produto cadastrado com sucesso')
+toast.success('Produto cadastrado com sucesso!')
+
+router.push('/dashboard')
 
 }
 
@@ -84,7 +92,7 @@ console.log('Produto cadastrado com sucesso')
             const image = e.target.files[0]
 
             if(image.type !== 'image/jpeg' && image.type !== 'image/png'){
-                console.log('Apenas arquivos PNG e JPEG são aceitos')
+                toast.warning('Formato de imagem não permitido!')
                 return
 
             }
@@ -111,7 +119,6 @@ console.log('Produto cadastrado com sucesso')
                     <input 
                     type='file'
                     accept='image/png, image/jpeg'
-                    required
                     onChange={handleFile}
                     />
                     {previewImage && 
@@ -144,20 +151,20 @@ console.log('Produto cadastrado com sucesso')
                 type='text' 
                 name='name'
                 placeholder='Digite o nome do produto' 
-                required
+
                 className={styles.input} 
                 />
                 <input 
                 type='text' 
                 name='price'
                 placeholder=' Digite o preço' 
-                required
+                
                 className={styles.input} 
                 />
                 <textarea 
                 placeholder='Digite a descrição' 
                 name='description'
-                required
+                
                 className={styles.input} 
                 />
                 
