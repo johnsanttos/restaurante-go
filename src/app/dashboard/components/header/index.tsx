@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import styles from './styles.module.scss'
 import Image from 'next/image'
-import logoImg from '/public/Logo.svg'
+import logoImg from '/public/Logos.svg'
 import { LogInIcon } from 'lucide-react'
 import { deleteCookie } from 'cookies-next'
 import { useRouter } from 'next/navigation'
@@ -50,7 +50,7 @@ export function Header() {
                 >
                     <LogInIcon
                     size={24}
-                    color={'#fff'}
+                    color={'#000'}
                     />
                 </button>
 

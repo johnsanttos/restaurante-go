@@ -1,6 +1,6 @@
 import styles from './page.module.scss';
 import Image from "next/image";
-import logoImg from "/public/logo.svg";
+import logoImg from "/public/logos.svg";
 import Link from 'next/link';
 import { api } from '@/services/api';
 import { redirect } from 'next/navigation';

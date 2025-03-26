@@ -1,8 +1,15 @@
 
+import { OrderProps } from '@/lib/order.type'
 import styles from './styles.module.scss'
 import { RefreshCcw} from 'lucide-react'
-export function Orders(){
+import { ModalOrder } from '../modal'
+
+interface Props{
+    orders: OrderProps[]
+}
+export function Orders({orders}:Props){
     return(
+        <>
         <main className={styles.container}>
             <section className={styles.containerHeader}>
                 <h1> Ùltimos pedidos</h1>
@@ -13,25 +20,29 @@ export function Orders(){
             </section>
 
             <section className={styles.listOrders}>
+         {
+            orders.map(order=>(
                 <button
+                key={order.id}
                 className={styles.orderItem}
                 >
                     <div className={styles.tag}></div>
-                    <span> Mesa 10</span>
+                    <span> Mesa {order.table}</span>
 
 
                 </button>
 
-                <button
-                className={styles.orderItem}
-                >
-                    <div className={styles.tag}></div>
-                    <span> Mesa 69</span>
+            )
 
-
-                </button>
+            )
+         }
+        
+              
 
             </section>
         </main>
+        <ModalOrder/>
+
+        </>
     )
 }
