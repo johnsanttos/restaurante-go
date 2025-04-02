@@ -113,7 +113,7 @@ router.push('/dashboard')
             >
                 <label className={styles.labelImage}>
                     <span>
-                        <UploadCloud size={30} color='#fff'/>
+                        <UploadCloud size={30} color='#000'/>
                     </span>
 
                     <input 

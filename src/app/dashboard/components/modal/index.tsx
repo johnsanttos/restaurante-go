@@ -1,14 +1,21 @@
+"use client"  
+
 import styles from './styles.module.scss'
 import{X} from 'lucide-react'
+import {use} from 'react';
+import { OrderContext } from '@/provider/order'
 
 export function ModalOrder() {
+  const {onCloseModal} = use(OrderContext)
   return(
     <dialog
     className={styles.dialogContainer}
     >
       <section className={styles.dialogContent}>
     
-        <button className={styles.closeButton}>
+        <button 
+        onClick={onCloseModal}
+        className={styles.closeButton}>
           <X size={24} color='#ff3131'/>
             
             </button>

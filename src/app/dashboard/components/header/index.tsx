@@ -28,9 +28,10 @@ export function Header() {
         alt='Logo site'
         src ={logoImg}
         width={220}
-        height={90}
+        height={100}
         priority={true}
         quality={100}
+        
         />
         
         </Link>

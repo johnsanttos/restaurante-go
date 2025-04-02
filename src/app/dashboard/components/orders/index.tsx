@@ -13,6 +13,9 @@ interface Props{
 export function Orders({orders}:Props){
     const {modalOpen,onOpenModal }= use(OrderContext)
 
+function handleDetailOrder( order_id: string){
+    onOpenModal( order_id)
+}
     return(
         <>
         <main className={styles.container}>
@@ -29,6 +32,7 @@ export function Orders({orders}:Props){
             orders.map(order=>(
                 <button
                 key={order.id}
+                onClick={() => handleDetailOrder (order.id)}
                 className={styles.orderItem}
                 >
                     <div className={styles.tag}></div>
