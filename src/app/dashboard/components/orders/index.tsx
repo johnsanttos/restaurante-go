@@ -13,8 +13,8 @@ interface Props{
 export function Orders({orders}:Props){
     const {modalOpen,onOpenModal }= use(OrderContext)
 
-function handleDetailOrder( order_id: string){
-    onOpenModal( order_id)
+async function handleDetailOrder( order_id: string){
+   await  onOpenModal( order_id)
 }
     return(
         <>
